@@ -10,6 +10,7 @@ namespace WebApplication1.V1.Controllers
     /// Basic Values Controller - v0.1-1.0
     /// </summary>
     [ApiController]
+    [ApiVersion("1.1")]
     [ApiVersion("1.0", Deprecated = true)]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ValuesController : ControllerBase
@@ -19,6 +20,9 @@ namespace WebApplication1.V1.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Obsolete]
+        [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(string[]), 200)]
         [ProducesResponseType(404)]
@@ -33,6 +37,8 @@ namespace WebApplication1.V1.Controllers
         /// <param name="id">id to return</param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(string), 200)]
         [ProducesResponseType(404)]
@@ -47,6 +53,8 @@ namespace WebApplication1.V1.Controllers
         /// <param name="value">value to post</param>
         /// <returns></returns>
         [HttpPost]
+        [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(string), 201)]
         [ProducesResponseType(404)]
@@ -62,6 +70,7 @@ namespace WebApplication1.V1.Controllers
         /// <param name="value">value to overwrite</param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [MapToApiVersion("1.1")]
         [Produces("application/json")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -76,6 +85,7 @@ namespace WebApplication1.V1.Controllers
         /// <param name="id">id to delete</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [MapToApiVersion("1.1")]
         public async Task<IActionResult> Delete(int id)
         {
             return Accepted(); ;

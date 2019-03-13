@@ -89,12 +89,13 @@ namespace WebApplication1
                     document.Version = "2.0";
                     document.PostProcess = d => d.Info.Title = "Bye world!";
                 })
-                //.AddSwaggerDocument(document =>
-                //{
-                //    document.DocumentName = "v3.0";
-                //    document.ApiGroupNames = new[] { "3.0" };
-                //    document.PostProcess = d => d.Info.Title = "LOL!";
-                //})
+                .AddSwaggerDocument(document =>
+                {
+                    document.DocumentName = "v1.1";
+                    document.ApiGroupNames = new[] { "1.1" };
+                    document.Version = "1.1";
+                    document.PostProcess = d => d.Info.Title = "LOL!";
+                })
                 ;
         }
 
@@ -118,6 +119,7 @@ namespace WebApplication1
             app.UseSwaggerUi3( config =>
             {
                 config.SwaggerRoutes.Add(new SwaggerUi3Route("v1.0", "/swagger/v1.0/swagger.json"));
+                config.SwaggerRoutes.Add(new SwaggerUi3Route("v1.1", "/swagger/v1.1/swagger.json"));
                 config.SwaggerRoutes.Add(new SwaggerUi3Route("v2.0", "/swagger/v2.0/swagger.json"));
             });
 
